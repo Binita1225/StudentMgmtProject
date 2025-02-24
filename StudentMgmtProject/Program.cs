@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using StudentMgmtProject.Data;
 using StudentMgmtProject.Repository;
-using StudentMgmtProject.Repository.IRepository;
+using StudentMgmtProject.Services.FacultyService;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,6 +21,8 @@ builder.Services.AddSwaggerGen();
 //builder.Services.AddScoped<IFacultyRepository, FacultyRepository>();
 //builder.Services.AddScoped<IUserRepository, UserRepository>();
 //builder.Services.AddScoped<IProgramRepository, ProgramRepository>();
+
+builder.Services.AddScoped<IFacultyServices, FacultyServices>();
 
 var app = builder.Build();
 
