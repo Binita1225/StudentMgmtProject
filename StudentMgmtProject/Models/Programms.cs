@@ -12,6 +12,13 @@ namespace StudentMgmtProject.Model
 
         public int FacultyId { get; set; }
         public Faculty Faculty { get; set; } // Foreign key
+
+        public int DurationInYears { get; set; }
+        [StringLength(500)]
+        public string? Description { get; set; }
+        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+        public DateTime? UpdatedAt { get; set; }
+        public bool IsActive { get; set; } = true;
     }
 }
 

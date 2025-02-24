@@ -1,6 +1,8 @@
-﻿namespace StudentMgmtProject.Services.User
+﻿using StudentMgmtProject.Services.IServices;
+
+namespace StudentMgmtProject.Services.User
 {
-    public class UserServices
+    public class UserServices:IUserServices
     {
     }
 }
