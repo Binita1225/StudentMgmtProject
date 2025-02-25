@@ -16,7 +16,7 @@ namespace StudentMgmtProject.Controllers
             _programService = programService;
         }
 
-        // GET: api/program
+     
         [HttpGet]
         public ActionResult<List<ProgramVM>> GetAllPrograms()
         {
@@ -24,7 +24,6 @@ namespace StudentMgmtProject.Controllers
             return Ok(programs);
         }
 
-        // GET: api/program/{id}
         [HttpGet("{id}")]
         public ActionResult<ProgramDetailViewModel> GetProgramById(int id)
         {
@@ -36,7 +35,6 @@ namespace StudentMgmtProject.Controllers
             return Ok(program);
         }
 
-        // POST: api/program
         [HttpPost]
         public ActionResult<ProgramVM> AddProgram([FromBody] ProgramVM model)
         {
@@ -49,7 +47,6 @@ namespace StudentMgmtProject.Controllers
             return CreatedAtAction(nameof(GetProgramById), new { id = newProgram.ProgramId }, newProgram);
         }
 
-        // PUT: api/program/{id}
         [HttpPut("{id}")]
         public ActionResult<ProgramVM> UpdateProgram(int id, [FromBody] ProgramVM model)
         {
@@ -67,7 +64,7 @@ namespace StudentMgmtProject.Controllers
             return Ok(updatedProgram);
         }
 
-        // DELETE: api/program/{id}
+        
         [HttpDelete("{id}")]
         public IActionResult DeleteProgram(int id)
         {
@@ -77,7 +74,7 @@ namespace StudentMgmtProject.Controllers
                 return NotFound(new { message = "Program not found" });
             }
 
-            return NoContent(); // 204 No Content
+            return NoContent(); 
         }
     }
 }

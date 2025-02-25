@@ -1,4 +1,4 @@
-﻿namespace StudentMgmtProject.Services.User.Model
+﻿namespace StudentMgmtProject.UserService.Model
 {
     public class LoginVM
     {

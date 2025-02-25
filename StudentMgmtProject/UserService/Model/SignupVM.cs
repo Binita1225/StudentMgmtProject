@@ -1,6 +1,6 @@
 ﻿using StudentMgmtProject.Model;
 
-namespace StudentMgmtProject.Services.User.Model
+namespace StudentMgmtProject.UserService.Model
 {
     public class SignupVM
     {
