@@ -1,13 +1,14 @@
-﻿using StudentMgmtProject.Model;
+﻿using System.Collections.Generic;
+using StudentMgmtProject.Services.ProgramService.Model;
 
 namespace StudentMgmtProject.Services.ProgramService
 {
     public interface IProgramService
     {
-        IEnumerable<Programms> GetAllPrograms();
-        Programms GetProgramById(int id);
-        Programms AddProgram(Programms programms);
-        Programms UpdateProgram(Programms programms);
+        List<ProgramVM> GetAllPrograms();
+        ProgramDetailViewModel GetProgramById(int id);
+        ProgramVM AddProgram(ProgramVM program);  // Change return type to match implementation
+        ProgramVM UpdateProgram(ProgramVM program);  // Change return type to match implementation
         bool DeleteProgram(int id);
     }
 }

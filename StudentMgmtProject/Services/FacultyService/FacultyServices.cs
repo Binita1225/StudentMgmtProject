@@ -10,7 +10,7 @@ namespace StudentMgmtProject.Services.FacultyService
     {
         private readonly IRepository<Faculty> _faculty;
 
-        public FacultyServices(IRepository<Faculty> faculty)
+         public FacultyServices(IRepository<Faculty> faculty)
         {
             _faculty = faculty;
         }
