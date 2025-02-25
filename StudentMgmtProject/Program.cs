@@ -4,6 +4,7 @@ using StudentMgmtProject.Repository;
 using StudentMgmtProject.Services.FacultyService;
 using StudentMgmtProject.Services.IServices;
 using StudentMgmtProject.Services.ProgramService;
+using StudentMgmtProject.Services.StudentService;
 using StudentMgmtProject.Services.User;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -30,6 +31,7 @@ builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 
 builder.Services.AddScoped<IFacultyServices, FacultyServices>();
 builder.Services.AddScoped<IProgramService, ProgramService>();
+builder.Services.AddScoped<IStudentService, StudentService>();
 builder.Services.AddScoped<IUserServices, UserServices>();
 
 var app = builder.Build();
