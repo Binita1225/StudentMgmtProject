@@ -1,6 +1,7 @@
 ﻿using StudentMgmtProject.Data;
 using StudentMgmtProject.Model;
 using StudentMgmtProject.Repository;
+using StudentMgmtProject.Services.FacultyService.DTOs;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -15,47 +16,64 @@ namespace StudentMgmtProject.Services.FacultyService
             _faculty = faculty;
         }
 
-        public IEnumerable<Faculty> GetAllFaculties()
+        public IEnumerable<FacultyDto> GetAllFaculties()
         {
-            return _faculty.List();
+            return _faculty.List().Select(f => new FacultyDto
+            {
+                FacultyId = f.FacultyId,
+                FacultyName = f.FacultyName
+            }).ToList();
         }
 
-        public Faculty GetFacultyById(int id)
+        public FacultyDto GetFacultyById(int id)
         {
-            return _faculty.Find(id);
+            var faculty = _faculty.Find(id);
+            if (faculty == null) return null;
+
+            return new FacultyDto
+            {
+                FacultyId = faculty.FacultyId,
+                FacultyName = faculty.FacultyName
+            };
         }
 
-        public Faculty AddFaculty(Faculty faculty)
+        public FacultyDto AddFaculty(FacultyDto facultyDto)
         {
-            _faculty.Add(faculty);
-          
-            return faculty;
+            var faculty = new Faculty
+            {
+                FacultyName = facultyDto.FacultyName
+            };
+
+            var newFaculty = _faculty.Add(faculty);
+
+            return new FacultyDto
+            {
+                FacultyId = newFaculty.FacultyId,
+                FacultyName = newFaculty.FacultyName
+            };
         }
 
-        public Faculty UpdateFaculty(Faculty faculty)
+        public FacultyDto UpdateFaculty(int id, FacultyDto facultyDto)
         {
-            var existingFaculty = _faculty.Find(faculty.FacultyId);
-            if (existingFaculty == null)  {
-                return null;
-            }
+            var existingFaculty = _faculty.Find(id);
+            if (existingFaculty == null) return null;
 
-            existingFaculty.FacultyName = faculty.FacultyName;
+            existingFaculty.FacultyName = facultyDto.FacultyName;
             _faculty.Update(existingFaculty);
-           
-            return existingFaculty;
 
+            return new FacultyDto
+            {
+                FacultyId = existingFaculty.FacultyId,
+                FacultyName = existingFaculty.FacultyName
+            };
         }
 
         public bool DeleteFaculty(int id)
         {
             var faculty = _faculty.Find(id);
-            if (faculty == null)
-            {
-                return false;
-            }
+            if (faculty == null) return false;
 
             _faculty.Remove(faculty);
-            
             return true;
         }
 

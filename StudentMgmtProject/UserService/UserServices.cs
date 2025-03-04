@@ -34,7 +34,7 @@ namespace StudentMgmtProject.UserService
                 UserName = model.UserName,
                 Email = model.Email,
                 PasswordHash = hashedPassword,
-                Role = UserRole.Student
+                Role = model.Role
             };
             _userRepository.Add(user);
             return "User registered successfully";

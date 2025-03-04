@@ -29,7 +29,8 @@ namespace StudentMgmtProject.Controllers
         public IActionResult Login([FromBody] LoginVM model)
         {
             var token = _userService.Login(model);
-            if (token == "Invalid username or password.") return Unauthorized(token);
+            if (token == "User not found" || token == "Invalid password") return Unauthorized(token);
+
 
             return Ok(new { Token = token });
         }

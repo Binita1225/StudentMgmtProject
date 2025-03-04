@@ -55,6 +55,14 @@ namespace StudentMgmtProject.Services.ProgramService
 
         public ProgramVM AddProgram(ProgramVM model)
         {
+
+            var facultyExists = _facultyRepository.List().Any(f => f.FacultyId == model.FacultyId);
+
+            if (!facultyExists)
+            {
+                // Handle the error, you could throw an exception or return a meaningful response
+                throw new Exception("Faculty not found.");
+            }
             var program = new Programms
             {
                 ProgramName = model.ProgramName,

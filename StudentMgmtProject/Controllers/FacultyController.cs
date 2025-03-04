@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using StudentMgmtProject.Model;
 using StudentMgmtProject.Services.FacultyService;
+using StudentMgmtProject.Services.FacultyService.DTOs;
 
 namespace StudentMgmtProject.Controllers
 {
@@ -35,21 +36,21 @@ namespace StudentMgmtProject.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddFaculty([FromBody] Faculty faculty)
+        public IActionResult AddFaculty([FromBody] FacultyDto facultyDto)
         {
-            var newFaculty = _facultyServices.AddFaculty(faculty);
+            var newFaculty = _facultyServices.AddFaculty(facultyDto);
             return CreatedAtAction(nameof(GetFacultyById), new { id = newFaculty.FacultyId }, newFaculty);
         }
 
         [HttpPut("{id}")]
-        public IActionResult UpdateFaculty(int id, [FromBody] Faculty faculty)
+        public IActionResult UpdateFaculty(int id, [FromBody] FacultyDto facultyDto)
         {
-            if (id != faculty.FacultyId)
+            if (id != facultyDto.FacultyId)
             {
                 return BadRequest();
             }
 
-           var updatedFaculty = _facultyServices.UpdateFaculty(faculty);
+           var updatedFaculty = _facultyServices.UpdateFaculty(id, facultyDto);
             if (updatedFaculty == null)
             {
                 return NotFound();
