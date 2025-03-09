@@ -57,7 +57,7 @@ namespace StudentMgmtProject.Services.StudentService
             };
         }
 
-        public void AddStudent(StudentVM model)
+        public StudentVM AddStudent(StudentVM model)
         {
             var student = new Student
             {
@@ -74,7 +74,30 @@ namespace StudentMgmtProject.Services.StudentService
                 ProgramId = model.ProgramId
             };
 
-            _studentRepository.Add(student);
+           _studentRepository.Add(student);
+
+            var createdStudent = _studentRepository.Find(student.StudentId);
+
+            if (createdStudent == null)
+            {
+                throw new Exception("Failed to create student. Please check database insertion.");
+            }
+
+            return new StudentVM
+            {
+                StudentId = createdStudent.StudentId,
+                RollNo = createdStudent.RollNo,
+                FirstName = createdStudent.FirstName,
+                LastName = createdStudent.LastName,
+                Email = createdStudent.Email,
+                PhoneNumber = createdStudent.PhoneNumber,
+                Gender = createdStudent.Gender,
+                DateOfBirth = createdStudent.DateOfBirth,
+                Address = createdStudent.Address,
+                FatherName = createdStudent.FatherName,
+                MotherName = createdStudent.MotherName,
+                ProgramId = createdStudent.ProgramId
+            };
         }
 
         public void UpdateStudent(int id, StudentVM model)
@@ -101,5 +124,10 @@ namespace StudentMgmtProject.Services.StudentService
         {
             _studentRepository.Delete(id);
         }
+
+        //void IStudentService.AddStudent(StudentVM model)
+        //{
+        //    throw new NotImplementedException();
+        //}
     }
 }

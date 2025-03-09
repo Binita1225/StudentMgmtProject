@@ -39,8 +39,9 @@ namespace StudentMgmtProject.Controllers
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
 
-            _studentService.AddStudent(model);
-            var createdStudent = _studentService.GetStudentById(model.StudentId);
+            var createdStudent = _studentService.AddStudent(model); 
+            if (createdStudent == null) return BadRequest("Failed to create student.");
+
             return CreatedAtAction(nameof(GetStudentById), new { id = createdStudent.StudentId }, createdStudent);
         }
 

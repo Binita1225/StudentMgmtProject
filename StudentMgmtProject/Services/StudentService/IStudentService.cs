@@ -7,7 +7,7 @@ namespace StudentMgmtProject.Services.StudentService
     {
         List<StudentVM> GetAllStudents();
         StudentVM GetStudentById(int id);
-        void AddStudent(StudentVM model);
+        StudentVM AddStudent(StudentVM model);
         void UpdateStudent(int id, StudentVM model);
         void DeleteStudent(int id);
     }
