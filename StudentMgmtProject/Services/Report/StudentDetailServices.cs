@@ -21,26 +21,24 @@ namespace StudentMgmtProject.Services.Report
             return _context.SelectAllStudents();
         }
 
-        //public List<StudentInfoVM> GetAllStudents()
-        //{
-        //    return _context.Students
-        //        .FromSqlRaw("EXEC SelectAllStudents")
-        //        .Select(s => new StudentInfoVM
-        //        {
-        //            StudentId = s.StudentId,
-        //            RollNo = s.RollNo,
-        //            FirstName = s.FirstName,
-        //            LastName = s.LastName,
-        //            Email = s.Email,
-        //            PhoneNumber = s.PhoneNumber,
-        //            Gender = s.Gender.ToString(), 
-        //            DateOfBirth = s.DateOfBirth,
-        //            Address = s.Address,
-        //            FatherName = s.FatherName,
-        //            MotherName = s.MotherName,
-        //            ProgramName = s.Program.ProgramName 
-        //        })
-        //        .ToList();
-        //}
+        public List<SemWiseReportVM> GetSemesterWiseReport()
+        {
+
+            return _context.GetSemesterWiseReport();
+        }
+
+
+        public List<YearWiseReportVM> GetYearWiseReport()
+        {
+
+            return _context.GetYearlyWiseReport();
+        }
+
+        public List<StudentEnrollVM> GetStudentsEnrolledInProgram(int programId)
+        {
+
+            return _context.GetStudentsEnrolledInProgram(programId);
+        }
+
     }
 }

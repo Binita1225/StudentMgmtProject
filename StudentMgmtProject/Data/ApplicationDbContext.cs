@@ -20,6 +20,34 @@ namespace StudentMgmtProject.Data
             return data;
         }
 
+        public virtual List<SemWiseReportVM> GetSemesterWiseReport()
+        {
+            var data = this.Database.SqlQueryRaw<SemWiseReportVM>("EXEC GetSemesterWiseReport").ToList();
+
+            foreach (var item in data)
+            {
+                Console.WriteLine($"Gender: {item.Gender}, CurrentSemester: {item.CurrentSemester}");
+            }
+
+            return data;
+        }
+
+        public virtual List<YearWiseReportVM> GetYearlyWiseReport()
+        {
+            var data = this.Database.SqlQueryRaw<YearWiseReportVM>("EXEC GetYearlyWiseReport").ToList();
+            return data;
+        }
+
+        public virtual List<StudentEnrollVM> GetStudentsEnrolledInProgram(int programId)
+        {
+            var data = this.Database.SqlQueryRaw<StudentEnrollVM>(
+        "EXEC GetStudentsEnrolledInProgram @ProgramId",
+        new SqlParameter("@ProgramId", programId)
+    ).ToList();
+            //var data = this.Database.SqlQueryRaw<StudentEnrollVM>("EXEC GetStudentsEnrolledInProgram @ProgramId", new SqlParameter("@ProgramId", programId).ToList();
+            return data;
+        }
+
     }
 
 }
