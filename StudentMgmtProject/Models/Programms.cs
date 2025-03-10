@@ -2,6 +2,12 @@
 
 namespace StudentMgmtProject.Model
 {
+    public enum ProgramType
+    {
+        Semester,
+        Yearly
+    }
+
     public class Programms
     {
         [Key]
@@ -19,6 +25,8 @@ namespace StudentMgmtProject.Model
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
         public DateTime? UpdatedAt { get; set; }
         public bool IsActive { get; set; } = true;
+
+        public ProgramType ProgramType { get; set; }
     }
 }
 

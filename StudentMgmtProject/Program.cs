@@ -5,6 +5,7 @@ using StudentMgmtProject.Data;
 using StudentMgmtProject.Repository;
 using StudentMgmtProject.Services.FacultyService;
 using StudentMgmtProject.Services.ProgramService;
+using StudentMgmtProject.Services.Report;
 using StudentMgmtProject.Services.StudentService;
 using StudentMgmtProject.UserService;
 using System.Text;
@@ -68,6 +69,7 @@ builder.Services.AddScoped<IFacultyServices, FacultyServices>();
 builder.Services.AddScoped<IProgramService, ProgramService>();
 builder.Services.AddScoped<IStudentService, StudentService>();
 builder.Services.AddScoped<IUserServices, UserServices>();
+builder.Services.AddScoped<IStudentDetailServices, StudentDetailServices>();
 
 // Add Controllers & Swagger
 builder.Services.AddControllers();

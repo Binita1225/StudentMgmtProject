@@ -28,7 +28,8 @@ namespace StudentMgmtProject.Services.ProgramService
                 FacultyId = p.FacultyId,
                 DurationInYears = p.DurationInYears,
                 Description = p.Description,
-                IsActive = p.IsActive
+                IsActive = p.IsActive,
+                ProgramType = p.ProgramType
             }).ToList();
         }
 
@@ -49,7 +50,8 @@ namespace StudentMgmtProject.Services.ProgramService
                 Description = program.Description,
                 CreatedAt = program.CreatedAt,
                 UpdatedAt = program.UpdatedAt,
-                IsActive = program.IsActive
+                IsActive = program.IsActive,
+                ProgramType = program.ProgramType
             };
         }
 
@@ -69,7 +71,8 @@ namespace StudentMgmtProject.Services.ProgramService
                 FacultyId = model.FacultyId,
                 DurationInYears = model.DurationInYears,
                 Description = model.Description,
-                IsActive = model.IsActive
+                IsActive = model.IsActive,
+                ProgramType = model.ProgramType
             };
 
             _programRepository.Add(program);
@@ -81,7 +84,8 @@ namespace StudentMgmtProject.Services.ProgramService
                 FacultyId = program.FacultyId,
                 DurationInYears = program.DurationInYears,
                 Description = program.Description,
-                IsActive = program.IsActive
+                IsActive = program.IsActive,
+                ProgramType = program.ProgramType
             };
         }
 
@@ -95,6 +99,7 @@ namespace StudentMgmtProject.Services.ProgramService
             program.DurationInYears = model.DurationInYears;
             program.Description = model.Description;
             program.IsActive = model.IsActive;
+            program.ProgramType = model.ProgramType;
             program.UpdatedAt = DateTime.UtcNow;
 
             _programRepository.Update(program);
@@ -106,7 +111,8 @@ namespace StudentMgmtProject.Services.ProgramService
                 FacultyId = program.FacultyId,
                 DurationInYears = program.DurationInYears,
                 Description = program.Description,
-                IsActive = program.IsActive
+                IsActive = program.IsActive,
+                ProgramType = program.ProgramType
             };
         }
 
