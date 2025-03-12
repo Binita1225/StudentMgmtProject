@@ -8,5 +8,8 @@ namespace StudentMgmtProject.Services.Report
         List<SemWiseReportVM> GetSemesterWiseReport();
         List<YearWiseReportVM> GetYearWiseReport();
         List<StudentEnrollVM> GetStudentsEnrolledInProgram(int programId);
+        Task<List<ProgramVM>> GetStudentsProgram();
+
+
     }
 }

@@ -51,6 +51,14 @@ namespace StudentMgmtProject.Controllers
         }
 
 
+        [HttpGet("student-programs")]
+        public async Task<IActionResult> GetStudentsProgram()
+        {
+            var programs = await _studentDetailServices.GetStudentsProgram();
+            return Ok(programs);
+        }
+
+
         //public ActionResult<List<StudentEnrollVM>> GetStudentsEnrolledInProgram(int programId) 
         //{
         //    var students = _studentDetailServices.GetStudentsEnrolledInProgram(programId);

@@ -40,5 +40,17 @@ namespace StudentMgmtProject.Services.Report
             return _context.GetStudentsEnrolledInProgram(programId);
         }
 
+
+
+        public async Task<List<ProgramVM>> GetStudentsProgram()
+        {
+            return await _context.Programs
+                .Select(p => new ProgramVM
+                {
+                    ProgramId = p.ProgramId,
+                    ProgramName = p.ProgramName
+                })
+                .ToListAsync();
+        }
     }
 }
